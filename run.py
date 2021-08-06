@@ -12,6 +12,27 @@ class PO:
     def by_cpf(self, cpf):
         return self.__data[int(cpf)]["name"][0], self.__data[int(cpf)]
 
+    def max_profitmonth(self, cpf):
+        cpf = int(cpf)
+        p = self.__data[cpf]
+        p["profit"].sort()
+        max_profitmonth = p.loc[p["profit"][-1],"month"]
+        return max_profitmonth
+
+    def max_lossmonth(self, cpf):
+        cpf = int(cpf)
+        p = self.__data[cpf]
+        p["profit"].sort()
+        max_lossmonth = p.loc[p["profit"][0],"month"]
+        return max_lossmonth
+
+    def max_loss(self, cpf):
+        cpf = int(cpf)
+        p = self.__data[cpf]
+        p["profit"].sort()
+        max_loss = p["profit"][0]
+        return max_loss
+
     def max_profit(self, cpf):
         cpf = int(cpf)
         p = self.__data[cpf]
